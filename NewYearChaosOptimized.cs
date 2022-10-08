@@ -43,12 +43,13 @@ class Result
 
     public static void minimumBribes(List<int> q)
     {
-        int numMoves = 0;
-        int numBribed = 0;      // number of people bribed
-        // for each of the indices
+        // number of bribes made
+        int numBribes = 0;
+        // for each of the people in queue
         for(int i = 0; i < q.Count; i++)
         {           
             // if the value at i is 3 or more larger than the value that's supposed to be there
+            // value that's supposed to be there is i+1 
             // then 3+ bribes have been made to the person that was originally there
             // so print "Too chaotic"
             if((q[i] - (i+1)) > 2)
@@ -56,21 +57,24 @@ class Result
                 Console.WriteLine("Too chaotic");
                 return;
             }
-            // if it's not too chaotic, then q[i] can only be 2 away from where it's supposed to be
-            // AKA q[i] - 2 because that's the furthest q[i] can be from its original spot
-            // for each of the values prior to q[i] starting at index 0 or the value of q[i] - 2
+            // this for loop will only do stuff when a person has been bribed
+            // if it's not too chaotic, then q[i] can only be bribed starting at 
+            // 2 spaces to the left from where it originally was AKA q[i] - 2 
+            // for each of the values prior to q[i] starting at 
+            // index 0 or the value of q[i] - 2, whichever is bigger
+            // use Math.Max to choose between the two so no negative numbers happen
             for(int j = Math.Max(0, q[i] - 2); j < i; j++)
             {
                 // a bribe has happened if q[j], a number prior to where q[i] is,
                 // is larger than q[i]
-                // if q[i] was bribed by q[j] increment numBribed
+                // if q[i] was bribed by q[j] increment numBribes
                 if(q[j]>q[i])
                 {
-                    numBribed++;
+                    numBribes++;
                 }
             }
         }
-        Console.WriteLine(numBribed);
+        Console.WriteLine(numBribes);
     }
 
 }
