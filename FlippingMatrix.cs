@@ -1,4 +1,4 @@
-// NOT COMPLETE
+// STILL NOT COMPLETE
 
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
@@ -55,14 +55,15 @@ class Result
             c2 = 0;
         }
         
-        /*for(int i = 0; i < dim; i++)
+        for(int i = 0; i < dim; i++)
         {
             for(int j = 0; j < dim; j++)
             {
                 Console.Write("{0} ", matrix[i][j]);
             }
             Console.WriteLine();
-        }*/
+        }
+        
         // check the left n columns if the bottom is greater than the top
         for(int i = 0; i < dim/2; i++)
         {
@@ -77,6 +78,8 @@ class Result
                     c2+=matrix[j][i];
                 }
             }
+            Console.WriteLine(c1);
+            Console.WriteLine(c2);
             if(c2>c1)
             {
                 rVal+=c2;
